@@ -13,13 +13,13 @@ int main(void)
 
 	while (num_1 <= '9')
 	{
-		while (num_2 <= '89')
+		while (num_2 <= '8')
 		{
 			if (num_1 < num_2)
 			{
 				putchar(num_1);
 				putchar(num_2);
-				if (num_1 != '89' || (num_1 == '89' && num_2 != '9'))
+				if (num_1 != '8' || (num_1 == '8' && num_2 != '9'))
 				{
 					putchar(',');
 					putchar(' ');
@@ -28,6 +28,7 @@ int main(void)
 			num_2++;
 		}
 		num_1++;
+		num_2 = 0;
 	}
 	putchar('\n');
 	return (0);
