@@ -34,4 +34,5 @@ listint_t;
 	void free_listint2(listint_t **head);
 	int pop_listint(listint_t **head);
 	size_t print_listint(const listint_t *h);
+	listint_t *find_listint_loop(listint_t *head);
 #endif
