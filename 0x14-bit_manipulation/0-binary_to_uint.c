@@ -1,7 +1,6 @@
 #include "main.h"
 
 /**
- * Author: Moses MKhonza
  * binary_to_uint - transforms an integer from binary to unsigned
  * @b: binary number is contained in the string.
  *
