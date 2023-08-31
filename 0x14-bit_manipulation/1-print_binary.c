@@ -3,15 +3,16 @@
 /**
  * print_binary - The binary equivalent of a decimal number is printed.
  * @n: binary-printable number
+ *
  */
 void print_binary(unsigned long int n)
 {
-	int g, count = 0;
+	int i, count = 0;
 	unsigned long int current;
 
-	for (g = 63; g >= 0; g--)
+	for (i = 63; i >= 0; i--)
 	{
-		current = n >> g;
+		current = n >> i;
 
 		if (current & 1)
 		{
@@ -21,6 +22,6 @@ void print_binary(unsigned long int n)
 		else if (count)
 			_putchar('0');
 	}
-	if (count)
+	if (!count)
 		_putchar('0');
 }
