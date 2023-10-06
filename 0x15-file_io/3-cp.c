@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 		if (u == -1 || h == -1)
 		{
 			dprintf(STDERR_FILENO,
-			"Error: Error: Unable to write to file %s\n", argv[2]);
+			"Error: Unable to write to file %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}
