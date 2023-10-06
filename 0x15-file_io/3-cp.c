@@ -6,10 +6,10 @@ char *create_buffer(char *file);
 void close_file(int fd);
 
 /**
- * create_buffer - Allocates 1024 bytes for a buffer.
+ * create_buffer - Allocates 1024 bytes for a buf.
  * @file: The name of the file buffer is storing chars for.
  *
- * Return: A pointer to the newly-allocated buffer.
+ * Return: A pointer to the newly-allocated buf
  */
 char *create_buffer(char *file)
 {
@@ -29,7 +29,7 @@ char *create_buffer(char *file)
 
 /**
  * close_file - Closes file descriptors.
- * @fd: The file descriptor to be closed.
+ * @fd: The fd to be closed.
  */
 void close_file(int fd)
 {
@@ -49,13 +49,14 @@ void close_file(int fd)
  * @argc: The number of arguments supplied to the program.
  * @argv: An array of pointers to the arguments.
  *
- * Return: 0 on success.
+ * Return: 0 always on success.
  *
- * Description: If the argument count is incorrect - exit code 97.
- * If file_from does not exist or cannot be read - exit code 98.
- * If file_to cannot be created or written to - exit code 99.
- * If file_to or file_from cannot be closed - exit code 100.
+ * Description: If the argument count is incorrect - exit with code 97.
+ * If file_from does not exist or cannot be read - exit with code 98.
+ * If file_to cannot be created or written to - exit with code 99.
+ * If either the src or file_from cannot be closed - exit with code 100.
  */
+
 int main(int argc, char *argv[])
 {
 	int from, to, r, w;
