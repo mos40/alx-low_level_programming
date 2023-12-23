@@ -43,7 +43,7 @@ shash_table_t *shash_table_create(unsigned long int size)
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-	shash_node_t *new_node, *tmp;
+	shash_node_t *new_node, *tmp_node;
 	char *value_copy;
 	unsigned long int index;
 
@@ -55,16 +55,16 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	index = key_index((const unsigned char *)key, ht->size);
-	tmp = ht->shead;
-	while (tmp)
+	tmp_node = ht->shead;
+	while (tmp_node)
 	{
-		if (strcmp(tmp->key, key) == 0)
+		if (strcmp(tmp_node->key, key) == 0)
 		{
-			free(tmp->value);
-			tmp->value = value_copy;
+			free(tmp_node->value);
+			tmp_node->value = value_copy;
 			return (1);
 		}
-		tmp = tmp->snext;
+		tmp_node = tmp_node->snext;
 	}
 
 	new_node = malloc(sizeof(shash_node_t));
@@ -100,16 +100,16 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		tmp = ht->shead;
-		while (tmp->snext != NULL && strcmp(tmp->snext->key, key) < 0)
-			tmp = tmp->snext;
-		new_node->sprev = tmp;
-		new_node->snext = tmp->snext;
-		if (tmp->snext == NULL)
+		tmp_node = ht->shead;
+		while (tmp_node->snext != NULL && strcmp(tmp_node->snext->key, key) < 0)
+			tmp_node = tmp_node->snext;
+		new_node->sprev = tmp_node;
+		new_node->snext = tmp_node->snext;
+		if (tmp_node->snext == NULL)
 			ht->stail = new_node;
 		else
-			tmp->snext->sprev = new_node;
-		tmp->snext = new_node;
+			tmp_node->snext->sprev = new_node;
+		tmp_node->snext = new_node;
 	}
 
 	return (1);
@@ -193,7 +193,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 void shash_table_delete(shash_table_t *ht)
 {
 	shash_table_t *head = ht;
-	shash_node_t *node, *tmp;
+	shash_node_t *node, *tmp_node;
 
 	if (ht == NULL)
 		return;
@@ -201,11 +201,11 @@ void shash_table_delete(shash_table_t *ht)
 	node = ht->shead;
 	while (node)
 	{
-		tmp = node->snext;
+		tmp_node = node->snext;
 		free(node->key);
 		free(node->value);
 		free(node);
-		node = tmp;
+		node = tmp_node;
 	}
 
 	free(head->array);
